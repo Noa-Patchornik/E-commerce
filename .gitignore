@@ -1,0 +1,109 @@
+# =====================================
+# 🐍 Python
+# =====================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.log
+*.pot
+*.pyc
+*.pkl
+*.sqlite3
+.env
+venv/
+env/
+ENV/
+.env.*
+.Python
+
+# =====================================
+# 🐳 Docker
+# =====================================
+*.pid
+*.seed
+*.tar
+*.bak
+*.swp
+*.tmp
+*.temp
+docker-compose.override.yml
+**/Dockerfile~
+**/docker-compose.override.yml
+**/.dockerignore
+**/.env
+**/.env.local
+
+# =====================================
+# 📦 Node / React (Frontend)
+# =====================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+.vite/
+dist/
+build/
+coverage/
+.cache/
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# =====================================
+# 🧰 IDEs / Editors
+# =====================================
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+*.DS_Store
+Thumbs.db
+*.sw?
+*.bak
+*.orig
+*.rej
+
+# =====================================
+# 🗃️ System / Misc
+# =====================================
+*.log
+*.out
+*.tmp
+*.pid
+*.gz
+*.zip
+*.tar
+*.tgz
+*.7z
+*.rar
+
+# =====================================
+# 🧱 Build & Cache
+# =====================================
+.mypy_cache/
+.pytest_cache/
+__pypackages__/
+.coverage
+htmlcov/
+.tox/
+.cache/
+pytestdebug.log
+
+# =====================================
+# 🧩 Project Specific (RabbitMQ, Mongo, etc.)
+# =====================================
+rabbitmq_data/
+mongo_data/
+infra/tmp/
+logs/
+*.db
+*.json.backup
