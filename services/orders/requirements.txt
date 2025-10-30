@@ -1,6 +1,6 @@
 fastapi
-uvicorn
-pymongo
+uvicorn[standard]
+aio-pika
 pydantic
-python-dotenv
-bson
+motor
+beanie
