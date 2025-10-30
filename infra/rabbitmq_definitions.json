@@ -1,52 +1,42 @@
 {
-  "users": [
-    {
-      "name": "admin",
-      "password_hash": "8b0f52a1d1e3d6bced41731a7de7cb3a",
-      "hashing_algorithm": "rabbit_password_hashing_sha256",
-      "tags": "administrator"
-    }
-  ],
-  "vhosts": [
-    { "name": "/" }
-  ],
-  "permissions": [
-    {
-      "user": "admin",
-      "vhost": "/",
-      "configure": ".*",
-      "write": ".*",
-      "read": ".*"
-    }
-  ],
   "exchanges": [
     {
-      "name": "orders_exchange",
-      "vhost": "/",
-      "type": "direct",
-      "durable": true,
-      "auto_delete": false,
-      "internal": false,
-      "arguments": {}
+      "name": "order.exchange",
+      "type": "topic",
+      "durable": true
+    },
+    {
+      "name": "payment.exchange",
+      "type": "topic",
+      "durable": true
     }
   ],
   "queues": [
     {
-      "name": "orders_queue",
-      "vhost": "/",
+      "name": "payment.order.created.queue",
       "durable": true,
-      "auto_delete": false,
-      "arguments": {}
+      "arguments": {
+        "x-dead-letter-exchange": "dlq.exchange"
+      }
+    },
+    {
+      "name": "inventory.payment.succeeded.queue",
+      "durable": true
     }
+
   ],
   "bindings": [
     {
-      "source": "orders_exchange",
-      "vhost": "/",
-      "destination": "orders_queue",
+      "source": "order.exchange",
+      "destination": "payment.order.created.queue",
       "destination_type": "queue",
-      "routing_key": "order.created",
-      "arguments": {}
+      "routing_key": "order.created"
+    },
+    {
+      "source": "payment.exchange",
+      "destination": "inventory.payment.succeeded.queue",
+      "destination_type": "queue",
+      "routing_key": "payment.succeeded"
     }
   ]
 }
