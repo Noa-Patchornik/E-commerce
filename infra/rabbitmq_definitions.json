@@ -13,30 +13,26 @@
   ],
   "queues": [
     {
-      "name": "payment.order.created.queue",
-      "durable": true,
-      "arguments": {
-        "x-dead-letter-exchange": "dlq.exchange"
-      }
+      "name": "order.created.queue",
+      "durable": true
     },
     {
-      "name": "inventory.payment.succeeded.queue",
+      "name": "payment.request.queue",
       "durable": true
     }
-
   ],
   "bindings": [
     {
       "source": "order.exchange",
-      "destination": "payment.order.created.queue",
+      "destination": "order.created.queue",
       "destination_type": "queue",
       "routing_key": "order.created"
     },
     {
       "source": "payment.exchange",
-      "destination": "inventory.payment.succeeded.queue",
+      "destination": "payment.request.queue",
       "destination_type": "queue",
-      "routing_key": "payment.succeeded"
+      "routing_key": "payment.request"
     }
   ]
 }
